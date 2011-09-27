@@ -80,7 +80,7 @@ public class FazTime {
 			forcaMaxima = Math.max(time.getForca(), forcaMaxima);
 		}
 
-		if (forcaMinima < 0.5 * forcaMaxima) {
+		if (forcaMinima < 0.7 * forcaMaxima) {
 			System.out.println("Sorteio ** NAO ** equilibrado!!");
 		} else {
 			System.out.println("Sorteio equilibrado!!");
