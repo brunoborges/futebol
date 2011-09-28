@@ -6,44 +6,52 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-/*
- import org.apache.commons.lang.builder.ToStringBuilder;
- import org.apache.commons.lang.builder.ToStringStyle;
- */
-
 public class FazTime {
 
 	static final int JOGADORES_POR_TIME = 2;
-
 	static List<Jogador> jogadores = new ArrayList<Jogador>();
 	static List<Time> times = new ArrayList<Time>();
+	static char[] alfabeto = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+			'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
-	private static int forcaMedia;
+	private static double forcaMedia;
 
 	private static void inicializaJogadores() {
-		jogadores.add(new Jogador("Tiago Carpanese", 2));
-		jogadores.add(new Jogador("Bruno Borges", 5));
-		jogadores.add(new Jogador("Felipe Magela", 5));
-		jogadores.add(new Jogador("Augusto Nasser", 3));
-		jogadores.add(new Jogador("Juan Garay", 3));
-		jogadores.add(new Jogador("Diogo Máximo", 5));
+		jogadores.clear();
+		jogadores.add(new Jogador("Alex Souza", 3));
 		jogadores.add(new Jogador("André Guedes", 3));
-		jogadores.add(new Jogador("Fabiano Rodrigues", 3));
-		jogadores.add(new Jogador("Leonardo Pinto", 3));
-		jogadores.add(new Jogador("Léo Soares", 4));
-		jogadores.add(new Jogador("Diego Berardino", 4));
+		jogadores.add(new Jogador("Augusto Nasser", 3));
+		jogadores.add(new Jogador("Bruno Borges", 5));
+		jogadores.add(new Jogador("Diego Berardino", 3));
+		jogadores.add(new Jogador("Diogo Gonçalves", 5));
+		jogadores.add(new Jogador("Diogo Máximo", 5));
+		jogadores.add(new Jogador("Felipe Magela", 5));
+		jogadores.add(new Jogador("Guilhermo Reid", 3));
 		jogadores.add(new Jogador("Jean Pereira", 3));
+		jogadores.add(new Jogador("Juan Garay", 2));
+		jogadores.add(new Jogador("Leonardo Pinto", 3));
+		jogadores.add(new Jogador("Leonardo Soares", 3));
+		jogadores.add(new Jogador("Lúcio Simões", 2));
+		jogadores.add(new Jogador("Marcelo Behera", 3));
+		jogadores.add(new Jogador("Pedrão Barros", 3));
+		jogadores.add(new Jogador("Rafael Coutinho", 4));
+		jogadores.add(new Jogador("Rodrigo Caixeta", 5));
+		jogadores.add(new Jogador("Tiago Barros", 3));
+		jogadores.add(new Jogador("Tiago Carpanese", 3));
 
 		calculaMedia();
+	}
 
+	private static void preparaTimes() {
+		times.clear();
 		int totalTimes = jogadores.size() / JOGADORES_POR_TIME;
 		for (int i = 0; i < totalTimes; i++) {
-			times.add(new Time("Time " + i, JOGADORES_POR_TIME));
+			times.add(new Time("Time " + alfabeto[i], JOGADORES_POR_TIME));
 		}
 	}
 
 	private static void calculaMedia() {
-		int forcaTotal = 0;
+		double forcaTotal = 0;
 
 		for (Jogador j : jogadores) {
 			forcaTotal += j.getForca();
@@ -52,26 +60,33 @@ public class FazTime {
 		forcaMedia = forcaTotal / jogadores.size();
 	}
 
-	static boolean isEquilibrado(Time a, Time b) {
-		int diff = Math.abs(a.getForca() - b.getForca());
-		return (diff == 0 || diff < 3);
+	public static void main(String[] args) {
+		do {
+			inicializaJogadores();
+			preparaTimes();
+			montaTimes();
+		} while (!calculaEquilibrio());
+
+		imprimeTimes();
+
+		System.out.println("##################");
+		System.out.println("  FIM DO SORTEIO");
+		System.out.println("##################");
 	}
 
-	public static void main(String[] args) {
-		inicializaJogadores();
-		montaTimes();
-
-		// double percentual = (double) times.size() / (double) total;
-		// System.out.println(percentual * 100);
+	private static void imprimeTimes() {
 		for (Time time : times) {
 			System.out.println(time);
 			System.out.println("-----");
-		}
 
-		calculaEquilibrio();
+			try {
+				Thread.sleep(new Random().nextInt(3000));
+			} catch (InterruptedException e) {
+			}
+		}
 	}
 
-	private static void calculaEquilibrio() {
+	private static boolean calculaEquilibrio() {
 		int forcaMinima = Integer.MAX_VALUE;
 		int forcaMaxima = Integer.MIN_VALUE;
 
@@ -80,11 +95,7 @@ public class FazTime {
 			forcaMaxima = Math.max(time.getForca(), forcaMaxima);
 		}
 
-		if (forcaMinima < 0.7 * forcaMaxima) {
-			System.out.println("Sorteio ** NAO ** equilibrado!!");
-		} else {
-			System.out.println("Sorteio equilibrado!!");
-		}
+		return !(forcaMinima < 0.7 * forcaMaxima);
 	}
 
 	private static void montaTimes() {
