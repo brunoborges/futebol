@@ -18,26 +18,27 @@ public class FazTime {
 
 	private static void inicializaJogadores() {
 		jogadores.clear();
+
 		jogadores.add(new Jogador("Alex Souza", 3));
-		jogadores.add(new Jogador("André Guedes", 3));
-		jogadores.add(new Jogador("Augusto Nasser", 3));
-		jogadores.add(new Jogador("Bruno Borges", 5));
+		jogadores.add(new Jogador("André Guedes", 2));
+		jogadores.add(new Jogador("Augusto Nesser (Caixetinha)", 3));
+		jogadores.add(new Jogador("Bruno Borges", 4));
 		jogadores.add(new Jogador("Diego Berardino", 3));
-		jogadores.add(new Jogador("Diogo Gonçalves", 5));
-		jogadores.add(new Jogador("Diogo Máximo", 5));
-		jogadores.add(new Jogador("Felipe Magela", 5));
+		jogadores.add(new Jogador("Diogo Gonçalves", 4));
+		jogadores.add(new Jogador("Diogo Máximo", 4));
+		jogadores.add(new Jogador("Felipe Magela", 4));
 		jogadores.add(new Jogador("Guilhermo Reid", 3));
 		jogadores.add(new Jogador("Jean Pereira", 3));
 		jogadores.add(new Jogador("Juan Garay", 2));
+		jogadores.add(new Jogador("Léo Soares", 4));
 		jogadores.add(new Jogador("Leonardo Pinto", 3));
-		jogadores.add(new Jogador("Leonardo Soares", 3));
-		jogadores.add(new Jogador("Lúcio Simões", 2));
+		jogadores.add(new Jogador("Lúcio Simões", 3));
 		jogadores.add(new Jogador("Marcelo Behera", 3));
 		jogadores.add(new Jogador("Pedrão Barros", 3));
-		jogadores.add(new Jogador("Rafael Coutinho", 4));
-		jogadores.add(new Jogador("Rodrigo Caixeta", 5));
-		jogadores.add(new Jogador("Tiago Barros", 3));
-		jogadores.add(new Jogador("Tiago Carpanese", 3));
+		jogadores.add(new Jogador("Rafael Coutinho", 3));
+		jogadores.add(new Jogador("Rodrigo Caixeta", 4));
+		jogadores.add(new Jogador("Tiago Barros (pedrinho)", 3));
+		jogadores.add(new Jogador("Tiago Carpanese", 2));
 
 		calculaMedia();
 	}
