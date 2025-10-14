@@ -33,37 +33,27 @@
       <relativePath>../pom.xml</relativePath>
    </parent>
 
-   <properties>
-      <maven.compiler.release>21</maven.compiler.release>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-   </properties>
-
    <dependencies>
       <dependency>
          <groupId>io.github.brunoborges</groupId>
          <artifactId>teammaker-core</artifactId>
-         <version>1.0-SNAPSHOT</version>
       </dependency>
       <dependency>
          <groupId>com.fasterxml.jackson.core</groupId>
          <artifactId>jackson-databind</artifactId>
-         <version>2.19.2</version>
       </dependency>
       <dependency>
          <groupId>info.picocli</groupId>
          <artifactId>picocli</artifactId>
-         <version>4.7.7</version>
       </dependency>
       <dependency>
          <groupId>org.junit.jupiter</groupId>
          <artifactId>junit-jupiter</artifactId>
-         <version>5.13.4</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
-         <version>2.25.1</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
@@ -73,20 +63,14 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.14.0</version>
-            <configuration>
-               <release>${maven.compiler.release}</release>
-            </configuration>
          </plugin>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-surefire-plugin</artifactId>
-            <version>3.5.3</version>
          </plugin>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
-            <version>3.6.1</version>
             <executions>
                <execution>
                   <phase>package</phase>
@@ -112,7 +96,6 @@
       <profile>
          <id>native</id>
          <properties>
-            <native.maven.plugin.version>0.10.6</native.maven.plugin.version>
             <imageName>teammaker</imageName>
          </properties>
          <build>
@@ -120,8 +103,6 @@
                <plugin>
                   <groupId>org.graalvm.buildtools</groupId>
                   <artifactId>native-maven-plugin</artifactId>
-                  <version>${native.maven.plugin.version}</version>
-                  <extensions>true</extensions>
                   <executions>
                      <execution>
                         <id>build-native</id>
