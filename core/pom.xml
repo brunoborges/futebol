@@ -34,8 +34,6 @@
    </parent>
 
    <properties>
-      <maven.compiler.source>21</maven.compiler.source>
-      <maven.compiler.target>21</maven.compiler.target>
       <maven.compiler.release>21</maven.compiler.release>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
    </properties>
@@ -72,9 +70,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.14.0</version>
             <configuration>
-               <source>21</source>
-               <target>21</target>
-               <release>21</release>
+               <release>${maven.compiler.release}</release>
             </configuration>
          </plugin>
          <plugin>
